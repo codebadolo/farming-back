@@ -42,6 +42,19 @@ INSTALLED_APPS = [
     'paiement',
     'produit',
     'utilisateur',
+    'attribut',
+    'categorie',
+    'commandeproduit',
+    'coupon',
+    'couponcommande',
+    'listeSouhait',
+    'methodepaiement',
+    'mouvementstock',
+    'notification',
+    'panier',
+    'produitPromo',
+    'promotion',
+    'stock',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-xl font-bold mb-4">Produit ajouté à la liste de souhaits</h2>
+<p>{{ produit.nom }} a été ajouté à votre liste de souhait.</p>
+<a href="{% url 'voir_liste_souhait' %}" class="text-blue-600 underline">Voir la liste de souhaits</a>
+{% endblock %}

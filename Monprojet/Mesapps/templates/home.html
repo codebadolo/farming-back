@@ -1,0 +1,24 @@
+<!-- Mesapps/templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Accueil - Produits{% endblock %}
+
+{% block content %}
+    <h2 class="text-2xl font-semibold mb-4">Catégories</h2>
+    <ul class="mb-6">
+        {% for cat in categories %}
+            <li class="mb-1">{{ cat.nom }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-4">Produits</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% for produit in produits %}
+            <div class="bg-white p-4 rounded shadow">
+                <h3 class="font-bold text-lg">{{ produit.nom }}</h3>
+                <p>{{ produit.description }}</p>
+                <p class="text-green-600 font-semibold">{{ produit.prix }} FCFA</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

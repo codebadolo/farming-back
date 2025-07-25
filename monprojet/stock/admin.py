@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Stock, MouvementStock
 
-# Register your models here.
+# Modele pour les stocks.
+admin.site.register(Stock)
+admin.site.register(MouvementStock)

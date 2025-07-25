@@ -1,3 +1,10 @@
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework_simplejwt.views import ( # type: ignore
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
 """
 URL configuration for monprojet project.
 
@@ -19,4 +26,18 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+# Authentification
+    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    
+# Urls pour les applications
+
+path("api/utilisateur/", include("utilisateur.urls")),
+path("api/produit/", include("produit.urls")),
+path("api/stock/", include("stock.urls")),
+path("api/panier/", include("panier.urls")),
+path("api/commande/", include("commande.urls")),
+path("api/livraison/", include("livraison.urls")),
+path("api/paiement/", include("paiement.urls")),
+path("api/promotions/", include("promotions.urls")),
 ]

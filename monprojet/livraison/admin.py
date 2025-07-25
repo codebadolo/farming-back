@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Livraison
 
-# Register your models here.
+# Modele pour la livraison.
+admin.site.register(Livraison)

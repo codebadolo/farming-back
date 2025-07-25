@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Categorie, Produit, Attribut, ListeSouhait
 
-# Register your models here.
+# Modele pour les produits.
+admin.site.register(Categorie)
+admin.site.register(Produit)
+admin.site.register(Attribut)
+admin.site.register(ListeSouhait)

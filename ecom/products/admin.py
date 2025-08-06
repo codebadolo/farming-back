@@ -1,16 +1,16 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Categorie, Produit, ImageProduit, AttributProduit, AvisProduit
+from unfold.admin import ModelAdmin , TabularInline
 
-
-class ImageProduitInline(admin.TabularInline):
+class ImageProduitInline(TabularInline):
     """Inline pour les images des produits"""
     model = ImageProduit
     extra = 1
     fields = ('image', 'alt_text', 'ordre')
 
 
-class AttributProduitInline(admin.TabularInline):
+class AttributProduitInline(TabularInline):
     """Inline pour les attributs des produits"""
     model = AttributProduit
     extra = 1
@@ -18,7 +18,7 @@ class AttributProduitInline(admin.TabularInline):
 
 
 @admin.register(Categorie)
-class CategorieAdmin(admin.ModelAdmin):
+class CategorieAdmin(ModelAdmin):
     """Administration des catégories"""
     
     list_display = ('nom', 'parent', 'niveau_display', 'active', 'ordre', 'date_creation')
@@ -43,7 +43,7 @@ class CategorieAdmin(admin.ModelAdmin):
 
 
 @admin.register(Produit)
-class ProduitAdmin(admin.ModelAdmin):
+class ProduitAdmin(ModelAdmin):
     """Administration des produits"""
     
     list_display = (
@@ -98,7 +98,7 @@ class ProduitAdmin(admin.ModelAdmin):
 
 
 @admin.register(ImageProduit)
-class ImageProduitAdmin(admin.ModelAdmin):
+class ImageProduitAdmin(ModelAdmin):
     """Administration des images de produits"""
     
     list_display = ('produit', 'image_display', 'alt_text', 'ordre', 'date_ajout')
@@ -115,7 +115,7 @@ class ImageProduitAdmin(admin.ModelAdmin):
 
 
 @admin.register(AttributProduit)
-class AttributProduitAdmin(admin.ModelAdmin):
+class AttributProduitAdmin(ModelAdmin):
     """Administration des attributs de produits"""
     
     list_display = ('produit', 'nom_attribut', 'valeur', 'date_ajout')
@@ -124,7 +124,7 @@ class AttributProduitAdmin(admin.ModelAdmin):
 
 
 @admin.register(AvisProduit)
-class AvisProduitAdmin(admin.ModelAdmin):
+class AvisProduitAdmin(ModelAdmin):
     """Administration des avis produits"""
     
     list_display = ('produit', 'utilisateur', 'note', 'modere', 'date_creation')

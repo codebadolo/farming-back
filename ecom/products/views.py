@@ -161,9 +161,7 @@ class MesProduitsView(generics.ListAPIView):
     ordering = ['-date_ajout']
     
     def get_queryset(self):
-        return Produit.objects.filter(vendeur=self.request.user).select_related(
-            'categorie'
-        ).prefetch_related('images', 'avis')
+        return Produit.objects.filter(vendeur=self.request.user).select_related('categorie').prefetch_related('images', 'avis')
 
 
 class AvisProduitListCreateView(generics.ListCreateAPIView):

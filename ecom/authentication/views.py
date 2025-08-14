@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
 from rest_framework import generics, status, filters, permissions
-from rest_framework.decorators import api_view, permission_classes, action
+from rest_framework.decorators import api_view, permission_classes, action ,authentication_classes
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAdminUser
@@ -19,7 +19,7 @@ from .serializers import (
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.views import APIView
 
-
+from rest_framework.permissions import AllowAny
 class RegisterView(generics.CreateAPIView):
     """Vue pour l'inscription des utilisateurs"""
     queryset = CustomUser.objects.all()
@@ -41,9 +41,11 @@ class RegisterView(generics.CreateAPIView):
 
 
 @api_view(['POST'])
+@authentication_classes([])   
 @permission_classes([permissions.AllowAny])
 def login_view(request):
     """Vue pour la connexion"""
+
     serializer = LoginSerializer(data=request.data)
     if serializer.is_valid():
         user = serializer.validated_data['user']
